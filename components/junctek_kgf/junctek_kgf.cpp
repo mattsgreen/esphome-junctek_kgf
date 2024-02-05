@@ -237,23 +237,23 @@ void JuncTekKGF::loop()
 {
 //todo not needed. uncomment if you do not receive any data
 
-//  const unsigned long start_time = esphome::millis();
-//
-//  if (!this->last_settings_ || (*this->last_settings_ + this->update_settings_interval_) < start_time)
-//  {
-//    this->last_settings_ = start_time;
-//    char buffer[20];
-//    sprintf(buffer, ":R51=%d,2,1,\r\n", this->address_);
-//    write_str(buffer);
-//  }
-//
-//  if (!this->last_stats_ || (*this->last_stats_ + this->update_stats_interval_) < start_time)
-//  {
-//    this->last_stats_ = start_time;
-//    char buffer[20];
-//    sprintf(buffer, ":R50=%d,2,1,\r\n", this->address_);
-//    write_str(buffer);
-//  }
+  const unsigned long start_time = esphome::millis();
+
+  if (!this->last_settings_ || (*this->last_settings_ + this->update_settings_interval_) < start_time)
+  {
+    this->last_settings_ = start_time;
+    char buffer[20];
+    sprintf(buffer, ":R51=%d,2,1,\r\n", this->address_);
+    write_str(buffer);
+  }
+
+  if (!this->last_stats_ || (*this->last_stats_ + this->update_stats_interval_) < start_time)
+  {
+    this->last_stats_ = start_time;
+    char buffer[20];
+    sprintf(buffer, ":R50=%d,2,1,\r\n", this->address_);
+    write_str(buffer);
+  }
 
   if (readline())
   {
